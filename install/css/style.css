@@ -403,7 +403,7 @@ select {
 /* line 4, ../scss/_header.scss */
 .typecho-head-nav {
   padding: 0 10px;
-  background: #292D33; }
+  background-image: linear-gradient(25deg, #7354bc, #6c76d2, #5c97e8, #38b7ff) }
 
 /* line 9, ../scss/_header.scss */
 .typecho-head-nav a {

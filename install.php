@@ -1,5 +1,12 @@
 <?php if (!file_exists(dirname(__FILE__) . '/config.inc.php')): ?>
 <?php
+/**
+ * Typecho Blog Platform
+ *
+ * @copyright  Copyright (c) 2008 Typecho team (http://www.typecho.org)
+ * @license    GNU General Public License 2.0
+ * @version    $Id$
+ */
 
 /** 定义根目录 */
 define('__TYPECHO_ROOT_DIR__', dirname(__FILE__));
@@ -51,7 +58,7 @@ if (!empty($_GET) || !empty($_POST)) {
     }
 
     $parts = parse_url($_SERVER['HTTP_REFERER']);
-	if (!empty($parts['port'])) {
+    if (!empty($parts['port'])) {
         $parts['host'] = "{$parts['host']}:{$parts['port']}";
     }
 
@@ -168,7 +175,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head lang="zh-CN">
     <meta charset="<?php _e('UTF-8'); ?>" />
-	<title><?php _e('Typecho 安装程序'); ?></title>
+    <title><?php _e('Typecho 安装程序'); ?></title>
     <link rel="stylesheet" type="text/css" href="install/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="install/css/grid.css" />
     <link rel="stylesheet" type="text/css" href="install/css/style.css" />
@@ -213,8 +220,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                     <?php endif;?>
                     </div>
 
-                    <div class="p message notice">
-                        <div class="session">
+                    <div class="session">
                     <p><?php _e('您可以将下面两个链接保存到您的收藏夹'); ?>:</p>
                     <ul>
                     <?php
@@ -231,10 +237,8 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                     </ul>
                     </div>
 
+                    <p><?php _e('希望您能尽情享用 Typecho 带来的乐趣!'); ?></p>
                 </div>
-                    </div>
-
-                    
                 <?php endif;?>
             <?php elseif (isset($_GET['start'])): ?>
                 <?php if (!isset($db)) : ?>
@@ -337,7 +341,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                         $installDb->query($installDb->insert('table.options')->rows(array('name' => 'allowXmlRpc', 'user' => 0, 'value' => 2)));
 
                                         /** 初始分类 */
-                                        $installDb->query($installDb->insert('table.metas')->rows(array('name' => _t('默认分类'), 'slug' => 'default', 'type' => 'category', 'description' => _t('只是一个默认分类，由Typecho自动创建。'),
+                                        $installDb->query($installDb->insert('table.metas')->rows(array('name' => _t('默认分类'), 'slug' => 'default', 'type' => 'category', 'description' => _t('只是一个默认分类'),
                                         'count' => 1, 'order' => 1)));
 
                                         /** 初始关系 */
@@ -345,11 +349,11 @@ Typecho_Cookie::set('__typecho_lang', $lang);
 
                                         /** 初始内容 */
                                         $installDb->query($installDb->insert('table.contents')->rows(array('title' => _t('欢迎使用 Typecho'), 'slug' => 'start', 'created' => Typecho_Date::time(), 'modified' => Typecho_Date::time(),
-                                        'text' => '<!--markdown-->' . _t('如果您看到这篇文章,表示您的 blog 已经安装成功，您可以删除此文章'), 'authorId' => 1, 'type' => 'post', 'status' => 'publish', 'commentsNum' => 1, 'allowComment' => 1,
+                                        'text' => '<!--markdown-->' . _t('如果您看到这篇文章,表示您的 blog 已经安装成功.'), 'authorId' => 1, 'type' => 'post', 'status' => 'publish', 'commentsNum' => 1, 'allowComment' => 1,
                                         'allowPing' => 1, 'allowFeed' => 1, 'parent' => 0)));
 
                                         $installDb->query($installDb->insert('table.contents')->rows(array('title' => _t('关于'), 'slug' => 'start-page', 'created' => Typecho_Date::time(), 'modified' => Typecho_Date::time(),
-                                        'text' => '<!--markdown-->' . _t('本页面由 Typecho 创建, 这只是个测试页面，您可以删除此页面'), 'authorId' => 1, 'order' => 0, 'type' => 'page', 'status' => 'publish', 'commentsNum' => 0, 'allowComment' => 1,
+                                        'text' => '<!--markdown-->' . _t('本页面由 Typecho 创建, 这只是个测试页面.'), 'authorId' => 1, 'order' => 0, 'type' => 'page', 'status' => 'publish', 'commentsNum' => 0, 'allowComment' => 1,
                                         'allowPing' => 1, 'allowFeed' => 1, 'parent' => 0)));
 
                                         /** 初始评论 */
@@ -445,9 +449,6 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                     } else if (NULL == _r('userName')) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('请填写您的用户名') . '</p>';
-                                    } else if (NULL == _r('userPassword')) {
-                                        $success = false;
-                                        echo '<p class="message error">' . _t('请填写您的登录密码') . '</p>';
                                     } else if (NULL == _r('userMail')) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('请填写您的邮箱地址') . '</p>';
@@ -457,6 +458,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                     } else if (200 < strlen(_r('userMail'))) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('邮箱长度超过限制, 请不要超过 200 个字符') . '</p>';
+                                    }
                                 }
 
                                 $_dbConfig = _rFrom('dbHost', 'dbUser', 'dbPassword', 'dbCharset', 'dbPort', 'dbDatabase', 'dbFile', 'dbDsn', 'dbEngine');
@@ -572,8 +574,8 @@ Typecho_Db::set(\$db);
                             <?php require_once './install/' . $type . '.php'; ?>
                             <li>
                             <label class="typecho-label" for="dbPrefix"><?php _e('数据库前缀'); ?></label>
-                            <input type="text" class="text" name="dbPrefix" id="dbPrefix" value="<?php _v('dbPrefix', 'te_'); ?>" />
-                            <p class="description"><?php _e('默认前缀是 "te_"'); ?></p>
+                            <input type="text" class="text" name="dbPrefix" id="dbPrefix" value="<?php _v('dbPrefix', 'typecho_'); ?>" />
+                            <p class="description"><?php _e('默认前缀是 "typecho_"'); ?></p>
                             </li>
                         </ul>
 
@@ -589,7 +591,7 @@ Typecho_Db::set(\$db);
                             <li>
                             <label class="typecho-label" for="userUrl"><?php _e('网站地址'); ?></label>
                             <input type="text" name="userUrl" id="userUrl" class="text" value="<?php _v('userUrl', _u()); ?>" />
-                            <p class="description"><?php _e('如果不正确请修改它'); ?></p>
+                            <p class="description"><?php _e('这是程序自动匹配的网站路径, 如果不正确请修改它'); ?></p>
                             </li>
                             <li>
                             <label class="typecho-label" for="userName"><?php _e('用户名'); ?></label>
@@ -599,7 +601,7 @@ Typecho_Db::set(\$db);
                             <li>
                             <label class="typecho-label" for="userPassword"><?php _e('登录密码'); ?></label>
                             <input type="password" name="userPassword" id="userPassword" class="text" value="<?php _v('userPassword'); ?>" />
-                            <p class="description"><?php _e('请填写您的登录密码'); ?></p>
+                            <p class="description"><?php _e('请填写您的登录密码, 如果留空系统将为您随机生成一个'); ?></p>
                             </li>
                             <li>
                             <label class="typecho-label" for="userMail"><?php _e('邮件地址'); ?></label>
@@ -609,10 +611,11 @@ Typecho_Db::set(\$db);
                         </ul>
                     </div>
                     <input type="hidden" name="action" value="config" />
-                    <p class="submit"><button type="submit" class="btn primary"><?php _e('确认配置，开始安装 &raquo;'); ?></button></p>
+                    <p class="submit"><button type="submit" class="btn primary"><?php _e('确认, 开始安装 &raquo;'); ?></button></p>
                 </form>
             <?php  else: ?>
                 <form method="post" action="?config">
+                <h1 class="typecho-install-title"><?php _e('欢迎使用 Typecho'); ?></h1>
                 <div class="typecho-install-body">
                 <h2><?php _e('安装说明'); ?></h2>
                 <p><strong><?php _e('本安装程序将自动检测服务器环境是否符合最低配置需求. 如果不符合, 将在上方出现提示信息, 请按照提示信息检查您的主机配置. 如果服务器环境符合要求, 将在下方出现 "开始下一步" 的按钮, 点击此按钮即可一步完成安装.'); ?></strong></p>
@@ -624,7 +627,7 @@ Typecho_Db::set(\$db);
                 <?php _e('对于贡献突出者, 他的名字将出现在贡献者名单中.'); ?></p>
                 </div>
                 <p class="submit">
-                    <button type="submit" class="btn primary"><?php _e('开始安装 &raquo;'); ?></button>
+                    <button type="submit" class="btn primary"><?php _e('我准备好了, 开始下一步 &raquo;'); ?></button>
 
                     <?php if (count($langs) > 1): ?>
                     <select style="float: right" onchange="window.location.href='install.php?lang=' + this.value">
