@@ -214,10 +214,7 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                     </div>
 
                     <div class="p message notice">
-                    <a target="_blank" href="http://spreadsheets.google.com/viewform?key=pd1Gl4Ur_pbniqgebs5JRIg&hl=en">参与用户调查, 帮助我们完善产品</a>
-                    </div>
-
-                    <div class="session">
+                        <div class="session">
                     <p><?php _e('您可以将下面两个链接保存到您的收藏夹'); ?>:</p>
                     <ul>
                     <?php
@@ -235,6 +232,9 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                     </div>
 
                 </div>
+                    </div>
+
+                    
                 <?php endif;?>
             <?php elseif (isset($_GET['start'])): ?>
                 <?php if (!isset($db)) : ?>
