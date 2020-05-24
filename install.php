@@ -445,6 +445,9 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                     } else if (NULL == _r('userName')) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('请填写您的用户名') . '</p>';
+                                    } else if (NULL == _r('userPassword')) {
+                                        $success = false;
+                                        echo '<p class="message error">' . _t('请填写您的登录密码') . '</p>';
                                     } else if (NULL == _r('userMail')) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('请填写您的邮箱地址') . '</p>';
@@ -454,7 +457,6 @@ Typecho_Cookie::set('__typecho_lang', $lang);
                                     } else if (200 < strlen(_r('userMail'))) {
                                         $success = false;
                                         echo '<p class="message error">' . _t('邮箱长度超过限制, 请不要超过 200 个字符') . '</p>';
-                                    }
                                 }
 
                                 $_dbConfig = _rFrom('dbHost', 'dbUser', 'dbPassword', 'dbCharset', 'dbPort', 'dbDatabase', 'dbFile', 'dbDsn', 'dbEngine');
@@ -587,7 +589,7 @@ Typecho_Db::set(\$db);
                             <li>
                             <label class="typecho-label" for="userUrl"><?php _e('网站地址'); ?></label>
                             <input type="text" name="userUrl" id="userUrl" class="text" value="<?php _v('userUrl', _u()); ?>" />
-                            <p class="description"><?php _e('这是程序自动匹配的网站路径, 如果不正确请修改它'); ?></p>
+                            <p class="description"><?php _e('如果不正确请修改它'); ?></p>
                             </li>
                             <li>
                             <label class="typecho-label" for="userName"><?php _e('用户名'); ?></label>
@@ -597,7 +599,7 @@ Typecho_Db::set(\$db);
                             <li>
                             <label class="typecho-label" for="userPassword"><?php _e('登录密码'); ?></label>
                             <input type="password" name="userPassword" id="userPassword" class="text" value="<?php _v('userPassword'); ?>" />
-                            <p class="description"><?php _e('请填写您的登录密码, 如果留空系统将为您随机生成一个'); ?></p>
+                            <p class="description"><?php _e('请填写您的登录密码'); ?></p>
                             </li>
                             <li>
                             <label class="typecho-label" for="userMail"><?php _e('邮件地址'); ?></label>
@@ -607,17 +609,22 @@ Typecho_Db::set(\$db);
                         </ul>
                     </div>
                     <input type="hidden" name="action" value="config" />
-                    <p class="submit"><button type="submit" class="btn primary"><?php _e('确认, 开始安装 &raquo;'); ?></button></p>
+                    <p class="submit"><button type="submit" class="btn primary"><?php _e('确认配置，开始安装 &raquo;'); ?></button></p>
                 </form>
             <?php  else: ?>
                 <form method="post" action="?config">
                 <div class="typecho-install-body">
                 <h2><?php _e('安装说明'); ?></h2>
                 <p><strong><?php _e('本安装程序将自动检测服务器环境是否符合最低配置需求. 如果不符合, 将在上方出现提示信息, 请按照提示信息检查您的主机配置. 如果服务器环境符合要求, 将在下方出现 "开始下一步" 的按钮, 点击此按钮即可一步完成安装.'); ?></strong></p>
-               
+                <h2><?php _e('许可及协议'); ?></h2>
+                <p><?php _e('Typecho 基于 <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a> 协议发布, 我们允许用户在 GPL 协议许可的范围内使用, 拷贝, 修改和分发此程序.'); ?>
+                <?php _e('在GPL许可的范围内, 您可以自由地将其用于商业以及非商业用途.'); ?></p>
+                <p><?php _e('Typecho 软件由其社区提供支持, 核心开发团队负责维护程序日常开发工作以及新特性的制定.'); ?>
+                <?php _e('如果您遇到使用上的问题, 程序中的 BUG, 以及期许的新功能, 欢迎您在社区中交流或者直接向我们贡献代码.'); ?>
+                <?php _e('对于贡献突出者, 他的名字将出现在贡献者名单中.'); ?></p>
                 </div>
                 <p class="submit">
-                    <button type="submit" class="btn primary"><?php _e('我准备好了, 开始下一步 &raquo;'); ?></button>
+                    <button type="submit" class="btn primary"><?php _e('开始安装 &raquo;'); ?></button>
 
                     <?php if (count($langs) > 1): ?>
                     <select style="float: right" onchange="window.location.href='install.php?lang=' + this.value">
