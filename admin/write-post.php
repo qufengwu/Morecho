@@ -97,6 +97,18 @@ Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
 				<p><input id="tags" name="tags" type="text" value="<?php $post->tags(',', false); ?>" class="w-100 text" /></p>
 			</section>
 
+			<section class="typecho-post-option">
+    			<label for="order" class="typecho-label"><?php _e('置顶');?></label>
+   				 <p>
+        		<select id="order" name="order" class="w-100">
+            <option value="0" <?php if ($post->order == '0' || !$post->order): ?>
+                selected<?php endif;?>><?php _e('否');?></option>
+            <option value="1" <?php if ($post->order == '1'): ?> selected<?php endif;?>>
+                <?php _e('是');?></option>
+        		</select>
+    			</p>
+			</section>
+
 			<?php Typecho_Plugin::factory('admin/write-post.php')->option($post); ?>
 
 			<button type="button" id="advance-panel-btn" class="btn btn-xs"><?php _e('高级选项'); ?> <i class="i-caret-down"></i></button>
@@ -139,6 +151,7 @@ Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
 					<p><textarea id="trackback" class="w-100 mono" name="trackback" rows="2"></textarea></p>
 					<p class="description"><?php _e('每一行一个引用地址, 用回车隔开'); ?></p>
 				</section>
+
 
 				<?php Typecho_Plugin::factory('admin/write-post.php')->advanceOption($post); ?>
 			</div><!-- end #advance-panel -->
