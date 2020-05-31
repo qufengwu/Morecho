@@ -2,6 +2,7 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
+include 'TUi.php';
 
 Typecho_Widget::widget('Widget_Themes_Files')->to($files);
 ?>

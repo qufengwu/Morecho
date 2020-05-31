@@ -9696,7 +9696,7 @@ button.bg-dark:focus {
   font-style: italic !important; }
 
 .text-white, .navbar.navbar-primary .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-secondary .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-success .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-info .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-warning .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-danger .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-light .navbar-menu-wrapper .nav-profile-text p, .navbar.navbar-dark .navbar-menu-wrapper .nav-profile-text p {
-  color: #ffffff !important; }
+  color: #ffffff !important;position: relative; }
 
 .text-primary, .list-wrapper .completed .remove {
   color: #b66dff !important; }
@@ -10298,8 +10298,8 @@ code {
 
 /* Footer */
 .footer {
-  background: #f2edf3;
-  border-top: 1px solid #e7dee9;
+  background: #ffffff;
+  border-top: 1px solid #ffffff;
   padding: 30px 1rem;
   transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
@@ -13334,7 +13334,18 @@ dl {
     .main-panel {
       margin-left: 0;
       width: 100%; } }
-
+.avatar.rounded-circle img, .rounded-circle {
+    border-radius: 50%!important;
+}
+.avatar img {
+    width: 100%;
+    border-radius: .375rem;
+}
+.avatar-sm {
+    font-size: .875rem;
+    width: 36px;
+    height: 36px;
+}
 .content-wrapper {
   background: #f2edf3;
   padding: 2.75rem 2.25rem;

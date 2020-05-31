@@ -2,7 +2,7 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
-
+include 'TUi.php';
 $actionUrl = $security->getTokenUrl(
     Typecho_Router::url('do', array('action' => 'backup', 'widget' => 'Backup'),
         Typecho_Common::url('index.php', $options->rootUrl)));

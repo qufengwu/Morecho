@@ -2,6 +2,7 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
+include 'TUi.php';
 
 $stat = Typecho_Widget::widget('Widget_Stat');
 $comments = Typecho_Widget::widget('Widget_Comments_Admin');

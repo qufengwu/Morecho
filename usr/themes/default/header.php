@@ -15,8 +15,8 @@
 
     <!-- 使用url函数转换相关路径 -->
     <link rel="stylesheet" href="<?php $this->options->themeUrl('normalize.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('grid.css'); ?>">
-    <link rel="stylesheet" href="<?php $this->options->themeUrl('style.css'); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/tefa@latest/grid.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/qufengwu/tefa@latest/style.css">
 
     <!--[if lt IE 9]>
     <script src="//cdnjscn.b0.upaiyun.com/libs/html5shiv/r29/html5.min.js"></script>

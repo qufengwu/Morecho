@@ -2,6 +2,7 @@
 include 'common.php';
 include 'header.php';
 include 'menu.php';
+include 'TUi.php';
 Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
 ?>
 
@@ -48,8 +49,8 @@ Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
 			<p class="submit clearfix">
 				<span class="right">
 					<input type="hidden" name="cid" value="<?php $post->cid(); ?>" />
-					<button type="submit" name="do" value="save" id="btn-save" class="btn btn-gradient-info btn-sm btn-rounded"><?php _e('保存草稿'); ?></button>
-					<button type="submit" name="do" value="publish" class="btn btn-gradient-info btn-sm btn-rounded" id="btn-submit"><?php _e('发布文章'); ?></button>
+					<button type="submit" name="do" value="save" id="btn-save" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue mdui-text-color-white-text"><?php _e('保存草稿'); ?></button>
+                            <button type="submit" name="do" value="publish" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink mdui-text-color-white-text" id="btn-submit"><?php _e('发布文章'); ?></button>
 					<?php if ($options->markdown && (!$post->have() || $post->isMarkdown)): ?>
 					<input type="hidden" name="markdown" value="1" />
 					<?php endif; ?>
