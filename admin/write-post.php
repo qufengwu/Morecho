@@ -95,6 +95,19 @@ Typecho_Widget::widget('Widget_Contents_Post_Edit')->to($post);
 			<section class="typecho-post-option">
 				<label for="token-input-tags" class="typecho-label"><?php _e('标签'); ?></label>
 				<p><input id="tags" name="tags" type="text" value="<?php $post->tags(',', false); ?>" class="w-100 text" /></p>
+				<div id="exist-tags">
+				<p style="background: #fff;border: 1px solid #D9D9D6;display: block;padding: 2px 4px;">
+				<?php
+				$stack = Typecho_Widget::widget('Widget_Metas_Tag_Cloud')->stack;
+				$i = 0; 
+				while (isset($stack[$i])) {
+  					echo "<a id=\"mydiv$i\" style=\"cursor:pointer;padding: 0px 6px;margin: 2px 0;display: inline-block;\" onclick=\"mytag=document.getElementById('mydiv$i');mytag.style.backgroundColor='#E9E9E6';t=document.getElementById('tags').value;c=t?',':'';document.getElementById('tags').value=t+c+'",$stack[$i]['name'],"'\">",$stack[$i]['name'], "</a>";
+  					$i++;
+  				if (isset($stack[$i])) echo "  ";
+				}
+				?>
+				</p>
+				</div>
 			</section>
 
 			<section class="typecho-post-option">
