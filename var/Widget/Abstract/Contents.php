@@ -73,7 +73,7 @@ class Widget_Abstract_Contents extends Widget_Abstract
     {
         $plainTxt = str_replace("\n", '', trim(strip_tags($this->excerpt)));
         $plainTxt = $plainTxt ? $plainTxt : $this->title;
-        return Typecho_Common::subStr($plainTxt, 0, 100, '...');
+        return Typecho_Common::subStr($plainTxt, 0, 150, '...');
     }
 
     /**
